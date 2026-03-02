@@ -1,0 +1,15 @@
+.landing-page {
+  padding-top: clamp(110px, 16vw, 150px);
+  font-family: "Roboto", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .landing-page {
+    padding-top: 175px;
+  }
+}
