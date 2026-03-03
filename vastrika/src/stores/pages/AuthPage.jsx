@@ -4,6 +4,8 @@ import "./AuthPage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,7 +22,7 @@ const AuthPage = () => {
     try {
       if (isLogin) {
         const res = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          `${API_BASE_URL}/api/auth/login`,
           { email, password }
         );
 
@@ -28,7 +30,7 @@ const AuthPage = () => {
         navigate("/");
       } else {
         await axios.post(
-          "http://localhost:5000/api/auth/register",
+          `${API_BASE_URL}/api/auth/register`,
           { name, email, password }
         );
 
@@ -88,3 +90,4 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+

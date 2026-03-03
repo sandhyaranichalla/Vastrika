@@ -6,6 +6,8 @@ import Footer from "../components/Footer/Footer";
 import "./CheckoutPage.css";
 import axios from "axios";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const CheckoutPage = () => {
   const { cart, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ const CheckoutPage = () => {
         paymentMethod,
       };
 
-      const res = await axios.post("http://localhost:5000/api/orders", payload, {
+      const res = await axios.post(`${API_BASE_URL}/api/orders`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -114,3 +116,5 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+

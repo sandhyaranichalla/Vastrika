@@ -6,6 +6,8 @@ import Footer from "../components/Footer/Footer";
 import "./Productdetailspage.css";
 import { CartContext } from "./Cartcontext";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Productdetailspage = () => {
   const { id } = useParams();
   const { addToCart } = useContext(CartContext);
@@ -16,7 +18,7 @@ const Productdetailspage = () => {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/products/${id}`
+          `${API_BASE_URL}/api/products/${id}`
         );
         setProduct(res.data);
         console.log("Product Data:", res.data);
@@ -59,3 +61,5 @@ const Productdetailspage = () => {
 };
 
 export default Productdetailspage;
+
+

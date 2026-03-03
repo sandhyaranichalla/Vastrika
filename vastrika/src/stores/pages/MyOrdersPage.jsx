@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
 import { AuthContext } from "../Context/AuthContext";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const MyOrdersPage = () => {
   const [orders, setOrders] = useState([]);
   const { user } = useContext(AuthContext);
@@ -14,7 +16,7 @@ const MyOrdersPage = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://localhost:5000/api/orders/my-orders",
+          `${API_BASE_URL}/api/orders/my-orders`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -64,3 +66,6 @@ const MyOrdersPage = () => {
 };
 
 export default MyOrdersPage;
+
+
+

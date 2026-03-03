@@ -8,6 +8,8 @@ import { useContext } from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 
 
 // const sareesdata = [
@@ -115,7 +117,7 @@ const Sareespage = () => {
 
 useEffect(() => {
   const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:5000/api/products");
+    const res = await axios.get(`${API_BASE_URL}/api/products`);
     setProducts(res.data);
     
   };
@@ -148,3 +150,5 @@ useEffect(() => {
   )
 }
 export default Sareespage;
+
+
